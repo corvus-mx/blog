@@ -1,11 +1,11 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import PostCard from '../../components/PostCard.astro';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
 
 // Obtener todos los posts
-const allPosts = await Astro.glob('./*.md');
+const allPosts = await Astro.glob('./posts/*.md');
 const posts = allPosts.sort((a, b) => 
   new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
 );
