@@ -1,0 +1,36 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Blog profesional de Alejandro - Ghostwriter y Copywriter con 5 años de experiencia" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <script src="https://cdn.tailwindcss.com">
+tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'navy': '#1e3a8a',
+              'sand': '#f5deb3',
+              'dark-bg': '#0f172a',
+              'card-bg': '#1e293b'
+            }
+          }
+        }
+      }</script>
+    
+  </head>
+  <body class="bg-dark-bg text-gray-100 min-h-screen">
+    <slot />
+  </body>
+</html>

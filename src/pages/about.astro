@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Sobre mí - Alejandro, HorseWriter">
+  <Header />
+  
+  <main class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <img 
+          src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+          alt="Alejandro - Escritor profesional"
+          class="w-48 h-48 rounded-full mx-auto mb-8 border-4 border-sand shadow-xl"
+        />
+        <h1 class="text-4xl font-bold text-white mb-4">Hola, soy Alejandro</h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          A los 25 años, llevo 5 años transformando ideas en palabras que conectan, 
+          persuaden y generan resultados extraordinarios.
+        </p>
+      </div>
+
+      <!-- Mi Historia -->
+      <section class="mb-16">
+        <div class="bg-card-bg rounded-lg p-8">
+          <h2 class="text-2xl font-bold text-sand mb-6">Mi historia</h2>
+          <div class="prose prose-invert max-w-none">
+            <p class="text-gray-300 mb-4 leading-relaxed">
+              Comenzé mi carrera como escritor hace 5 años, cuando descubrí que tenía el don 
+              de dar voz a las ideas de otros. Lo que empezó como una curiosidad se convirtió 
+              en mi pasión y profesión.
+            </p>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+              Como <strong class="text-sand">ghostwriter</strong>, he ayudado a ejecutivos, 
+              emprendedores y marcas a comunicar sus mensajes de manera clara y persuasiva. 
+              Mi trabajo se mantiene en las sombras, pero los resultados hablan por sí solos.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              En el mundo del <strong class="text-sand">copywriting</strong>, me especializo 
+              en crear contenido que no solo informa, sino que mueve a la acción. Desde 
+              newsletters que generan engagement hasta discursos corporativos que inspiran.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experiencia -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Mi experiencia</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-card-bg rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-white">Ghostwriting</h3>
+            </div>
+            <p class="text-gray-300 text-sm">
+              Artículos, libros y contenido editorial para líderes de industria. 
+              Tu voz, mi pluma, resultados extraordinarios.
+            </p>
+          </div>
+
+          <div class="bg-card-bg rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-white">Newsletter</h3>
+            </div>
+            <p class="text-gray-300 text-sm">
+              Contenido semanal que mantiene a tu audiencia comprometida 
+              y genera conversiones consistentes.
+            </p>
+          </div>
+
+          <div class="bg-card-bg rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-white">LinkedIn</h3>
+            </div>
+            <p class="text-gray-300 text-sm">
+              Posts que posicionan tu marca personal y generan 
+              networking de alto valor en la plataforma profesional.
+            </p>
+          </div>
+
+          <div class="bg-card-bg rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-white">Speech Corporativo</h3>
+            </div>
+            <p class="text-gray-300 text-sm">
+              Discursos que inspiran, motivan y transmiten mensajes 
+              corporativos con impacto y autenticidad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filosofía -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-navy to-card-bg rounded-lg p-8">
+          <h2 class="text-2xl font-bold text-sand mb-6">Mi filosofía</h2>
+          <blockquote class="text-lg text-gray-200 italic border-l-4 border-sand pl-6">
+            "Cada palabra tiene el poder de transformar una idea en acción. 
+            Mi trabajo es encontrar las palabras exactas que conecten con el corazón 
+            y muevan la mente de quien las lee."
+          </blockquote>
+          <p class="text-gray-300 mt-4">— Alejandro, HorseWriter</p>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section class="text-center">
+        <h2 class="text-2xl font-bold text-white mb-6">¿Trabajamos juntos?</h2>
+        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+          Si tienes un proyecto que requiere palabras que generen impacto, 
+          me encantaría conocer tu historia y ayudarte a contarla.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="mailto:alejandro@horsewriter.com" 
+            class="bg-sand text-dark-bg px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors"
+          >
+            Enviar email
+          </a>
+          <a 
+            href="https://linkedin.com/in/alejandro" 
+            class="border-2 border-sand text-sand px-8 py-3 rounded-lg font-bold hover:bg-sand hover:text-dark-bg transition-colors"
+          >
+            Conectar en LinkedIn
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

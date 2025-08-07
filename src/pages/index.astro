@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+
+// Obtener los posts más recientes
+const allPosts = await Astro.glob('./posts/*.md');
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime())
+  .slice(0, 3);
+---
+
+<Layout title="HorseWriter Blog - Alejandro, Ghostwriter & Copywriter">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-navy to-dark-bg py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="mb-8">
+          <img 
+            src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+            alt="Alejandro - Escritor profesional"
+            class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-sand shadow-lg"
+          />
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+          Hola, soy <span class="text-sand">Alejandro</span>
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Ghostwriter y Copywriter con <strong class="text-sand">5 años de experiencia</strong> 
+          creando contenido que conecta, persuade y transforma ideas en palabras poderosas.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <span class="bg-card-bg px-4 py-2 rounded-full text-gray-300">Newsletter</span>
+          <span class="bg-card-bg px-4 py-2 rounded-full text-gray-300">LinkedIn</span>
+          <span class="bg-card-bg px-4 py-2 rounded-full text-gray-300">Speech Corporativo</span>
+          <span class="bg-card-bg px-4 py-2 rounded-full text-gray-300">Copywriting</span>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/posts" 
+            class="bg-sand text-dark-bg px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors"
+          >
+            Ver mis escritos
+          </a>
+          <a 
+            href="/about" 
+            class="border-2 border-sand text-sand px-8 py-3 rounded-lg font-bold hover:bg-sand hover:text-dark-bg transition-colors"
+          >
+            Conoce mi historia
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Posts Section -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-white mb-4">Últimos escritos</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            Explora mis últimas creaciones: relatos, cuentos, crónicas y artículos 
+            que reflejan mi pasión por la escritura.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentPosts.map((post) => (
+            <PostCard
+              title={post.frontmatter.title}
+              excerpt={post.frontmatter.excerpt}
+              date={new Date(post.frontmatter.date).toLocaleDateString('es-ES')}
+              tag={post.frontmatter.tag}
+              slug={post.file.split('/').pop().replace('.md', '')}
+              image={post.frontmatter.image}
+            />
+          ))}
+        </div>
+        
+        <div class="text-center mt-12">
+          <a 
+            href="/posts" 
+            class="inline-flex items-center bg-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
+          >
+            Ver todos los posts
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-card-bg py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-white mb-4">Servicios profesionales</h2>
+          <p class="text-gray-400">Transformo ideas en contenido que genera resultados</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="bg-navy w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Newsletter</h3>
+            <p class="text-gray-400 text-sm">Contenido que conecta con tu audiencia</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-navy w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">LinkedIn</h3>
+            <p class="text-gray-400 text-sm">Posts que generan engagement profesional</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-navy w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Speech</h3>
+            <p class="text-gray-400 text-sm">Discursos corporativos impactantes</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-navy w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Ghostwriting</h3>
+            <p class="text-gray-400 text-sm">Tu voz, mi pluma, resultados extraordinarios</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

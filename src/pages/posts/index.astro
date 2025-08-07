@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+
+// Obtener todos los posts
+const allPosts = await Astro.glob('./*.md');
+const posts = allPosts.sort((a, b) => 
+  new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+);
+
+// Obtener tags únicos
+const allTags = [...new Set(posts.map(post => post.frontmatter.tag))];
+---
+
+<Layout title="Posts - HorseWriter Blog">
+  <Header />
+  
+  <main class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-white mb-4">Todos mis escritos</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Una colección de relatos, cuentos, crónicas y artículos que reflejan 
+          mi experiencia y pasión por la escritura.
+        </p>
+      </div>
+
+      <!-- Filtros por tag -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button 
+          class="filter-btn bg-sand text-dark-bg px-4 py-2 rounded-full font-medium hover:bg-white transition-colors"
+          data-filter="all"
+        >
+          Todos
+        </button>
+        {allTags.map(tag => (
+          <button 
+            class="filter-btn bg-card-bg text-gray-300 px-4 py-2 rounded-full font-medium hover:bg-navy hover:text-white transition-colors"
+            data-filter={tag.toLowerCase()}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <!-- Grid de posts -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+        {posts.map((post) => (
+          <div class="post-item" data-tag={post.frontmatter.tag.toLowerCase()}>
+            <PostCard
+              title={post.frontmatter.title}
+              excerpt={post.frontmatter.excerpt}
+              date={new Date(post.frontmatter.date).toLocaleDateString('es-ES')}
+              tag={post.frontmatter.tag}
+              slug={post.file.split('/').pop().replace('.md', '')}
+              image={post.frontmatter.image}
+            />
+          </div>
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-gray-400 text-lg">Aún no hay posts publicados.</p>
+        </div>
+      )}
+    </div>
+  </main>
+  
+  <Footer />
+
+  <script>
+    // Filtrado de posts por tag
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const postItems = document.querySelectorAll('.post-item');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          
+          // Actualizar botones activos
+          filterButtons.forEach(btn => {
+            btn.classList.remove('bg-sand', 'text-dark-bg');
+            btn.classList.add('bg-card-bg', 'text-gray-300');
+          });
+          this.classList.remove('bg-card-bg', 'text-gray-300');
+          this.classList.add('bg-sand', 'text-dark-bg');
+
+          // Filtrar posts
+          postItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-tag') === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</Layout>
